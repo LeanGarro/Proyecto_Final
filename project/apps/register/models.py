@@ -27,4 +27,4 @@ class usuario_register(models.Model):
     sexo = models.ForeignKey(sexos, null=False, blank=False, on_delete=models.CASCADE)
     
     def __str__(self):
-        return f"{self.nombre} {self.apellido}"
+        return f"id: {self.id} | {self.nombre} {self.apellido}"
