@@ -28,3 +28,4 @@ class usuario_register(models.Model):
     
     def __str__(self):
         return f"id: {self.id} | {self.nombre} {self.apellido}"
+    
