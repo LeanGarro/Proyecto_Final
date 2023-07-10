@@ -1,14 +1,13 @@
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from django.db import path
+from django.urls import path
 
-from .views import home
-
-app_name = "Home"
+from .views import Home
 
 app_name = "Home"
+
 
 urlpatterns = [
-    path("", home, name="home"),
+    path("", Home, name="Home"),
 
 ]
 
