@@ -3,7 +3,7 @@ from .models import usuario_register
 from.forms import usuario_forms
 
 # Create your views here.
-name = "Register"
+name = "register"
 
 def register(request):
     return render(request, "register/register.html")
@@ -21,13 +21,13 @@ def formulario_registro(request):
 
             registro.save()
             
-            return render(request, 'project/apps/Home/templates/home/index.html')
+            return render(request, 'home/index.html')
     
     else:
         
         formulario_register = usuario_forms()
     
-    return render(request, "project/apps/Register/templates/register/register.html", {"formulario_register": formulario_register})
+    return render(request, 'register/register.html', {"formulario_register": formulario_register})
 
 
 
