@@ -17,7 +17,6 @@ class sexos(models.Model):
 
 
 class usuario_register(models.Model):
-    id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=40, blank=False, null=False)
     apellido = models.CharField(max_length=40, blank=False, null=False)
     nacimiento = models.DateField(null=True)

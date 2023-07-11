@@ -1,5 +1,6 @@
 from django.shortcuts import render
-#from .models import usuario_register
+from .models import usuario_register
+from.forms import usuario_forms
 
 # Create your views here.
 name = "Register"
@@ -10,7 +11,23 @@ def register(request):
 def login(request):
     return render(request, "register/login.html")
 
+def formulario_registro(request):
+    if request.method == "POST":
+        formulario_register = usuario_forms(request.POST)
+        
+        if formulario_register.is_valid():
+            info = formulario_register.cleaned_data
+            registro = usuario_register(nombre= info['nombre'], apellido = info['apellido'], nacimiento = info['nacimiento'], usuario = info['usuario'], possword = info['possword'], pais = info['pais'], sexo = info['sexo'])          
 
+            registro.save()
+            
+            return render(request, 'project/apps/Home/templates/home/index.html')
+    
+    else:
+        
+        formulario_register = usuario_forms()
+    
+    return render(request, "project/apps/Register/templates/register/register.html", {"formulario_register": formulario_register})
 
 
 
