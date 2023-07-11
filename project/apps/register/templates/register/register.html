@@ -10,23 +10,15 @@
 
     <h1>Registrate</h1>
 
-    <form action="/" method="POST">{% csrf_token %}
+    <form action="/registrado/" method="POST">{% csrf_token %}
 
         <table>
 
-            {{ formulario_registro.as_table }}
+            {{ formulario_register.as_table }}
 
         </table>
 
-
-        <p>nombre: <input type="text" name="nombre" required></p>
-        <p>apellido: <input type="text" name="apellido" required></p>
-        <p>nacimiento: <input type="datepicker" name="nacimiento" required></p>
-        <p>usuario: <input type="text" name="usuario" required maxlength="20"></p>
-        <p>contraseña: <input type="text" name="contraseña", minlength="8", required></p>
-        <p>pais: <input type="text" name="pais" ></p>
-        <p>sexo: <input type="text" name="sexo" ></p>
-
+        
         <button type="submit">Registrarse</button>
     </form>
 

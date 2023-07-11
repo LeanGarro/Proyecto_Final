@@ -5,8 +5,8 @@ from.forms import usuario_forms
 # Create your views here.
 name = "register"
 
-def register(request):
-    return render(request, "register/register.html")
+def registrado(request):
+    return render(request, "register/registrado.html")
 
 def login(request):
     return render(request, "register/login.html")
