@@ -5,6 +5,9 @@ from.forms import usuario_forms
 # Create your views here.
 name = "register"
 
+def reservar(request):
+    return render(request, "register/reservar.html")
+
 def registrado(request):
     return render(request, "register/registrado.html")
 
