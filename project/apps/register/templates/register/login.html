@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+</head>
+<body>
+
+    {% extends 'home/index.html' %}
+
+    {% block CONTENIDO_INDEX %}
+        
+    <h1>Login</h1>
+
+    <h3>por ahora estamos trabajando en la pagina, disculpe las molestias</h3>
+    <br>
+
+    {% comment  %}
+        
+
+    <form action="/" method="post">
+        {% csrf_token %}
+
+        
+        <button type="submit">iniciar sesion</button>
+
+
+    </form>
+
+
+    {% endcomment %}
+    
+    {% endblock CONTENIDO_INDEX %}
+    
+
+
+</body>
+</html>

@@ -9,6 +9,9 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
+from django.core.management.utils import get_random_secret_key
+
+
 
 from pathlib import Path
 
@@ -24,7 +27,7 @@ sys.path.append(str(APPS_DIR))
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-hpl3b9712xuixi6kcxo_5^(2nepft*y8r&oyz)6$qjt+0w&j+v'
+SECRET_KEY = get_random_secret_key()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -41,8 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Home',
-    'Register',
+    'apps.home',
+    'apps.register',
 ]
 
 MIDDLEWARE = [
