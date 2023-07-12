@@ -6,3 +6,4 @@ from .models import *
 admin.site.register(paises)
 admin.site.register(sexos)
 admin.site.register(usuario_register)
+admin.site.register(usuario_reserva)
