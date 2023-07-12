@@ -6,20 +6,33 @@
     <title>login</title>
 </head>
 <body>
-    
-    {% include 'home/nav_var.html' %}
+
+    {% extends 'home/index.html' %}
+
+    {% block CONTENIDO_INDEX %}
+        
     <h1>Login</h1>
 
+    <h3>por ahora estamos trabajando en la pagina, disculpe las molestias</h3>
     <br>
 
-        <form action="/" method="post">
-            {% csrf_token %}
+    {% comment  %}
+        
 
-            
-            <button type="submit">iniciar sesion</button>
+    <form action="/" method="post">
+        {% csrf_token %}
+
+        
+        <button type="submit">iniciar sesion</button>
 
 
-        </form>
+    </form>
+
+
+    {% endcomment %}
+    
+    {% endblock CONTENIDO_INDEX %}
+    
 
 
 </body>

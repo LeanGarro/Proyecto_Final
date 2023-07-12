@@ -6,21 +6,35 @@
     <title>registrarte</title>
 </head>
 <body>
-    {% include 'home/nav_var.html' %}
 
-    <h1>Registrate</h1>
+    {% extends 'home/index.html' %}
+
+    {% block CONTENIDO_INDEX %}
+        
+    
+    <h1 class="border text-center ">Registrate</h1>
 
     <form action="/registrado/" method="POST">{% csrf_token %}
 
-        <table>
+        <p>
 
-            {{ formulario_register.as_table }}
+            <table>
+                
+                    
+                {{ formulario_register.as_table }}
+    
+                
+    
+            </table>
 
-        </table>
+        </p>
 
         
         <button type="submit">Registrarse</button>
     </form>
+    
+    {% endblock CONTENIDO_INDEX %}
+
 
     
 

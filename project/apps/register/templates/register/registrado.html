@@ -6,7 +6,11 @@
     <title>registrado</title>
 </head>
 <body>
-    {% include 'home/nav_var.html' %}
+    
+    {% extends 'home/index.html' %}
+
+    {% block CONTENIDO_INDEX %}
+        
     <h1>Felicidades, ya te haz registrado</h1>
 
     <h2>
@@ -14,6 +18,9 @@
         <a href="/">haciendo click aqui</a>
 
     </h2>
+    
+    
+    {% endblock CONTENIDO_INDEX %}
 
 </body>
 </html>
