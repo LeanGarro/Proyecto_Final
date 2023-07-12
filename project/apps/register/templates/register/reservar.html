@@ -6,13 +6,39 @@
     <title>reservar</title>
 </head>
 <body>
+
     {% extends 'home/index.html' %}
 
     {% block CONTENIDO_INDEX %}
         
-    <h1>Quieres hacer una reserva?</h1>
+    <h1 class="tex text-center">Quieres hacer una reserva?</h1>
+    <p></p>
+    <h2 class="text-center">Rellena el formulario</h2>
 
-    <h2>Rellena el formulario</h2>
+    <form action="/reservado/" method="POST">{% csrf_token %}
+
+        <div class="container">
+            <div class=" m-4 " style="height: 230px;">
+                <div class="mx-auto" style="width: 250px; height: 100px;">
+
+                    <table class="container text-center ">
+       
+                        {{ formulario_reservar.as_table }}
+            
+                    </table>
+
+                </div>
+            </div>
+            
+            <p class="container text-center ">
+
+                <button type="submit">reservar</button>
+
+            </p>
+                          
+        </div>
+     
+    </form>
     
     
     {% endblock CONTENIDO_INDEX %}

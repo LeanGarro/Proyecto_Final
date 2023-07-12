@@ -3,20 +3,21 @@ from django.db import models
 
 #Create your models here.
 class paises(models.Model):
-    
-    
-    
-    id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=56, blank=False, null=False)
     def __str__(self):
         return self.nombre
+    
+    class Meta:
+        db_table = "paises"
 
 class sexos(models.Model):
-    id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=50, blank=False, null=False)
 
     def __str__(self):
         return self.nombre
+    
+    class Meta:
+        db_table = "sexos"
 
 
 class usuario_register(models.Model):
@@ -37,7 +38,7 @@ class usuario_reserva(models.Model):
     apellido = models.CharField(max_length=40, blank=False, null=False)
     dni = models.IntegerField(blank=False, null=False)
     reserva = models.DateField(blank=False, null=False)
-    problemas = models.TextField(blank=False, null=False)
+    problemas = models.TextField(max_length=250, blank=False, null=False)
     
     def __str__(self) -> str:
         return f"atendido: {self.atendido} | {self.nombre} {self.apellido}"
