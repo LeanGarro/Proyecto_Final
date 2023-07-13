@@ -33,12 +33,12 @@ class usuario_register(models.Model):
         return f"id: {self.id} | {self.nombre} {self.apellido}"
     
 class usuario_reserva(models.Model):
-    atendido = models.BooleanField(default=False)
-    nombre = models.CharField(max_length=40, blank=False, null=False)
-    apellido = models.CharField(max_length=40, blank=False, null=False)
-    dni = models.IntegerField(blank=False, null=False)
-    reserva = models.DateField(blank=False, null=False)
-    problemas = models.TextField(max_length=250, blank=False, null=False)
+    atendido_r = models.BooleanField(default=False)
+    nombre_r = models.CharField(max_length=40, blank=False, null=False)
+    apellido_r = models.CharField(max_length=40, blank=False, null=False)
+    dni_r = models.IntegerField(blank=False, null=False)
+    reserva_r = models.DateField(blank=False, null=False)
+    problemas_r = models.TextField(max_length=250, blank=False, null=False)
     
     def __str__(self) -> str:
         return f"atendido: {self.atendido} | {self.nombre} {self.apellido}"
