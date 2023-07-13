@@ -39,16 +39,17 @@ def formulario_reservar(request):
         formulario_reservar = reserva_forms(request.POST)
     
         if formulario_reservar.is_valid():
-            info = formulario_reservar.cleaned_data
-            registro = usuario_reserva(nombre= info['nombre'], apellido = info['apellido'], dni = info['dni'], resrva = info['reserva'], problemas = info['problemas'])          
+            
+            #info = formulario_reservar.cleaned_data
+            #registro = reserva_forms(nombre= info['nombre'], apellido = info['apellido'], dni = info['dni'], resrva = info['reserva'], problemas = info['problemas'])          
 
-            registro.save()
+            formulario_reservar.save()
             return render(request, 'register/reservado.html')
     
     else: 
-        formulario_reservar = reserva_forms()
+        formulario_reservar = reserva_forms() #aqui hay problemas
     
-    return render(request, 'register/reservar.html', {"formulario_reservar": formulario_reservar})
+    return render(request, 'register/reservar.html', {"form": formulario_reservar})
 
 
 
