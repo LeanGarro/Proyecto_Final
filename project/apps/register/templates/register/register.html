@@ -4,15 +4,16 @@
 
     {% block CONTENIDO_INDEX %}
         
-    <h1 class="text-center ">Registrate</h1>
+    <h1 class="text-center my-auto ">Registrate</h1>
+    <h3 class="text-center">Llene el formulario con sus datos para poder registrarse</h3>
 
     <form action="/registrado/" method="POST">{% csrf_token %}
 
         <div class="container">
             <div class=" m-4 " style="height: 230px;">
-                <div class="mx-auto" style="width: 250px; height: 100px;">
+                <div class="mx-auto my-auto" style="width: 280px; height: 100px;">
 
-                    <table class="container text-center ">
+                    <table class="container text-center form-control-lg">
        
                         {{ formulario_register.as_table }}
             
@@ -23,12 +24,13 @@
             
             <p class="container text-center ">
 
-                <button type="submit">Registrarse</button>
+                <button type="submit" class="my-4 ">Registrarse</button>
+                <a class="btn btn-primary " href="/login/">Acceder</a>
 
             </p>
                           
         </div>
-     
+
     </form>
     
     {% endblock CONTENIDO_INDEX %}

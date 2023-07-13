@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from apps.register.views import login, formulario_registro, reservar, reservado
+from apps.register.views import login, formulario_registro, formulario_reservar
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,6 +25,6 @@ urlpatterns = [
     path("register/", formulario_registro),
     path("login/", login),
     path("registrado/", formulario_registro),
-    path("reservas/", reservar),
-    path("reservado/", reservado),
+    path("reservas/", formulario_reservar),
+    path("reservado/", formulario_reservar),
 ]

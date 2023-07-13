@@ -1,13 +1,13 @@
 from django import forms
-from .models import usuario_register, usuario_reserva
+from .models import UsuarioRegister, UsuarioReserva
 
-class usuario_forms(forms.ModelForm):
+class UsuarioForms(forms.ModelForm):
     class Meta:
-        model = usuario_register
+        model = UsuarioRegister
         fields= '__all__'
 
-class reserva_forms(forms.ModelForm):
+class ReservaForms(forms.ModelForm):
     class Meta:
-        model= usuario_reserva
-        fields= '__all__'
+        model= UsuarioReserva
+        fields= ["nombre_r", "apellido_r", "dni_r", "reserva_r", "problemas_r"]
 

@@ -20,7 +20,7 @@ class sexos(models.Model):
         db_table = "sexos"
 
 
-class usuario_register(models.Model):
+class UsuarioRegister(models.Model):
     nombre = models.CharField(max_length=40, blank=False, null=False)
     apellido = models.CharField(max_length=40, blank=False, null=False)
     nacimiento = models.DateField(blank=False, null=True)
@@ -32,14 +32,14 @@ class usuario_register(models.Model):
     def __str__(self):
         return f"id: {self.id} | {self.nombre} {self.apellido}"
     
-class usuario_reserva(models.Model):
-    atendido_r = models.BooleanField(default=False)
-    nombre_r = models.CharField(max_length=40, blank=False, null=False)
-    apellido_r = models.CharField(max_length=40, blank=False, null=False)
-    dni_r = models.IntegerField(blank=False, null=False)
-    reserva_r = models.DateField(blank=False, null=False)
-    problemas_r = models.TextField(max_length=250, blank=False, null=False)
+class UsuarioReserva(models.Model):
+    atendido_r = models.BooleanField(default=False, verbose_name='atendido?')
+    nombre_r = models.CharField(max_length=40, blank=False, null=False, default="ponga su nombre", verbose_name='nombre')
+    apellido_r = models.CharField(max_length=40, blank=False, null=False,default="ponga su apellido", verbose_name='apellido')
+    dni_r = models.CharField(max_length=12, blank=False, null=False,default="ponga su DNI", verbose_name='DNI' )
+    reserva_r = models.DateField(blank=False, null=False,default="7/7/2007", verbose_name='reserva')
+    problemas_r = models.TextField(max_length=250, blank=False, null=False, default='ponga su problema', verbose_name='describir problemas')
     
     def __str__(self) -> str:
-        return f"atendido: {self.atendido} | {self.nombre} {self.apellido}"
+        return f"atendido: {self.atendido_r} | {self.nombre_r} {self.apellido_r}"
     

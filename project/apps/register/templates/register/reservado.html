@@ -1,16 +1,11 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>registrado</title>
-</head>
-<body>
+{% extends 'home/index.html' %}
 
-    <h1>hello word</h1>
+{% block CONTENIDO_INDEX %}
+    
+<h1 class="text-center my-4">🥳Felicidades, haz conseguido registrarte🥳</h1>
+<h3 class="text-center">Ahora pulsa el boton "home" para volver al inicio</h3>
+<div class="text-center my-5 ">
+    <a class="btn btn-primary" href="/">Home</a>
+</div>
 
-    <a href="/">Home</a>
-
-
-</body>
-</html>
+{% endblock CONTENIDO_INDEX %}
