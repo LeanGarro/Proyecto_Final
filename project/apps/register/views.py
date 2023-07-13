@@ -37,10 +37,9 @@ def formulario_reservar(request):
     if request.method == "post":
         formulario_reservar = ReservaForms(request.POST)
         if formulario_reservar.is_valid(): 
-            #info = formulario_reservar.cleaned_data
-            #registro = UsuarioReserva(nombre_r= info['nombre_r'], apellido_r = info['apellido_r'], dni_r = info['dni_r'], reserva_r = info['reserva_r'], problemas_r = info['problemas_r'])          
-            
-            formulario_reservar.save()
+            info = formulario_reservar.cleaned_data
+            registro = UsuarioReserva(nombre_r= info['nombre_r'], apellido_r = info['apellido_r'], dni_r = info['dni_r'], reserva_r = info['reserva_r'], problemas_r = info['problemas_r'])   
+            registro.save()
 
             return render(request, 'register/reservado.html')
     
@@ -48,7 +47,4 @@ def formulario_reservar(request):
         formulario_reservar = ReservaForms()
     
     return render(request, 'register/reservar.html', {"form": formulario_reservar})
-
-
-
 

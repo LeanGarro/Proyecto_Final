@@ -21,10 +21,9 @@ from apps.register.views import login, formulario_registro, formulario_reservar
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("home.urls")),
-    #path("", formulario_registro),
     path("register/", formulario_registro),
-    path("login/", login),
     path("registrado/", formulario_registro),
+    path("login/", login),
     path("reservas/", formulario_reservar),
     path("reservado/", formulario_reservar),
 ]
