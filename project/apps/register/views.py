@@ -34,7 +34,7 @@ def formulario_registro(request):
     return render(request, 'register/register.html', {"formulario_register": formulario_register})
 
 def formulario_reservar(request):
-    if request.method == "post":
+    if request.method == "POST":
         formulario_reservar = ReservaForms(request.POST)
         if formulario_reservar.is_valid(): 
             info = formulario_reservar.cleaned_data
@@ -45,6 +45,7 @@ def formulario_reservar(request):
     
     else: 
         formulario_reservar = ReservaForms()
+        
     
     return render(request, 'register/reservar.html', {"form": formulario_reservar})
 
