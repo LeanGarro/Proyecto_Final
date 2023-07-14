@@ -54,4 +54,7 @@ Cosas a mejorar:
 
 La página login no es funcional. 
 
-Le falta estilos para mejorar el aspecto. 
+Le falta estilos para mejorar el aspecto.
+
+cosas a instalar en el entorno virtual:
+django: comando (win10): pip install django
