@@ -5,17 +5,8 @@ from.forms import UsuarioForms, ReservaForms, UsuarioReserva
 # Create your views here.
 name = "register"
 
-def reservar(request):
-    return render(request, "register/reservar.html")
-
-def registrado(request):
-    return render(request, "register/registrado.html")
-
 def login(request):
     return render(request, "register/login.html")
-
-def reservado(request):
-    return render(request, "register/reservado.html")
 
 def formulario_registro(request):
     if request.method == "POST":
