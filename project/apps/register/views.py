@@ -1,11 +1,15 @@
 from django.shortcuts import render
 from .models import UsuarioRegister
 from.forms import UsuarioForms, ReservaForms, UsuarioReserva
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import login, logout, authenticate
+
+from . import forms
 
 # Create your views here.
 name = "register"
 
-def login(request):
+def login_home(request):
     return render(request, "register/login.html")
 
 def formulario_registro(request):
@@ -40,3 +44,25 @@ def formulario_reservar(request):
     
     return render(request, 'register/reservar.html', {"form": formulario_reservar})
 
+def Login(request):
+    if request.method == "POST":
+        
+        form= AuthenticationForm(request, data= request.POST)
+        if form.is_valid():
+            
+            user_name= form.cleaned_data.get("username")
+            contraseña= form.cleaned_data.get("password")
+            
+            user= authenticate(username= user_name, password= contraseña)
+            if user is not None:
+                login(request, user)
+                return render(request, "home/index.html", {"mensaje":f"Bienvenido {user_name}"})
+            else:
+                return render(request, "home/index.html", {"mensaje":"Error, datos incorrectos"})          
+        else:
+            
+            return render(request, "home/index.html", {"mensaje": "Error, formulario erroneo"})
+    else:
+        form= AuthenticationForm()
+    
+    return render(request, "register/login.html", {'form_login':form})

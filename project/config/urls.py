@@ -16,14 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from apps.register.views import login, formulario_registro, formulario_reservar
+from apps.register.views import Login, formulario_registro, formulario_reservar
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("home.urls")),
     path("register/", formulario_registro),
     path("registrado/", formulario_registro),
-    path("login/", login),
+    path("login/", Login),
     path("reservas/", formulario_reservar),
     path("reservado/", formulario_reservar),
 ]
