@@ -13,12 +13,12 @@
                 {% if user.is_authenticated %}
                     <li class="nav-item"><a class="nav-link {% if  request.path == "/admin/"%}active{% endif %}" href="/admin/">admin</a></li>    
                     <li class="nav-item"><a class="nav-link {% if  request.path == "/reservas/"%}active{% endif %}" href="/reservas/">Reservar</a></li>
+                    <li class="nav-item"><a class="nav-link text-bg-info" href="/perfil/">{{user.username}} </a></li>    
+                    <li class="nav-item"><a class="nav-link text-danger {% if  request.path == "/logout/"%}active{% endif %}" href="/logout/">Logout</a></li>    
                 {% else %}    
-                    <li class="nav-item"><a class="nav-link {% if  request.path == "/login/"%}active{% endif %}" href="/login/">Inicia sesion</a></li>
                     <li class="nav-item"><a class="nav-link {% if  request.path == "/about/"%}active{% endif %}" href={% url 'home:about' %}>Nosotros</a></li>
                     <li class="nav-item"><a class="nav-link {% if  request.path == "/register/"%}active{% endif %}" href="/register/">Registrate</a></li>
-                
-
+                    <li class="nav-item"><a class="nav-link {% if  request.path == "/login/"%}active{% endif %}" href="/login/">Inicia sesion</a></li>
                 {% endif %}
             </ul>
         </div>

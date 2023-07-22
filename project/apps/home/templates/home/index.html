@@ -19,32 +19,38 @@
             
 
            {% block CONTENIDO_INDEX %}
-           <div class="m-4">
-               <div class="container border text-center alert fs-4" style="background-color: #8eff4d;"> {{mensaje}} </div>
-           </div>
-           
-            <!-- Heading Row-->
-            <div class="container">
-                <div class="row gx-4 gx-lg-5 align-items-center my-5 ">
-                    <div class="col-lg-7 "><img class="img-fluid rounded mb-5 mb-lg-2" style="width: 700px; height: 300px;" src="{% static 'home/img/lubrimec_original.jpg' %}" alt="..." /></div>
-                    <div class="col-lg-5">
-    
-                        <h1 class="font-weight-light">un poco sobre nosotros</h1>
-                        <p>si quieres hacernos consultas tenemos WhatsApp para que puedas saber todo lo que nesesites para estar tranquilo, y sepa en quien dejas tu vehiculo, servicio las 24hs</p>
-                        <a class="btn btn-primary" href="https://wa.me/549110003656203200" target="_blank">WhatsApp</a> 
-    
-                    </div>
-                </div>
+            <div class="m-1">
+                <div class="container text-center alert fs-4"> {{mensaje}} </div>
             </div>
             
-        
-        <!-- Content Row-->
-        <div class="row gx-4 gx-lg-5 text-center mx-auto ">
+            {% if user.is_authenticated %}  
+                <div class="m-4">
+                    <div class="container border text-center alert fs-4" style="background-color: #8eff4d;"> Bienvenido {{user}} </div>
+                </div>
+            {% endif %}
             
-            {% include 'home/cards.html' %}
+                <!-- Heading Row-->
+                <div class="container">
+                    <div class="row gx-4 gx-lg-5 align-items-center my-5 ">
+                        <div class="col-lg-7 "><img class="img-fluid rounded mb-5 mb-lg-2" style="width: 700px; height: 300px;" src="{% static 'home/img/lubrimec_original.jpg' %}" alt="..." /></div>
+                        <div class="col-lg-5">
+        
+                            <h1 class="font-weight-light">un poco sobre nosotros</h1>
+                            <p>si quieres hacernos consultas tenemos WhatsApp para que puedas saber todo lo que nesesites para estar tranquilo, y sepa en quien dejas tu vehiculo, servicio las 24hs</p>
+                            <a class="btn btn-primary" href="https://wa.me/549110003656203200" target="_blank">WhatsApp</a> 
+        
+                        </div>
+                    </div>
+                </div>
+                
+            
+            <!-- Content Row-->
+            <div class="row gx-4 gx-lg-5 text-center mx-auto ">
+                
+                {% include 'home/cards.html' %}
 
-        </div>
-           {% endblock CONTENIDO_INDEX %}
+            </div>
+        {% endblock CONTENIDO_INDEX %}
 
         {% include 'home/footer.html' %}
         <!-- Bootstrap core JS-->

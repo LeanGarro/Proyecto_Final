@@ -56,7 +56,7 @@ def Login(request):
             user= authenticate(username= user_name, password= contraseña)
             if user is not None:
                 login(request, user)
-                return render(request, "home/index.html", {"mensaje":f"Bienvenido {user_name}"})
+                return render(request, "home/index.html", {"mensaje":""})
             else:
                 return render(request, "home/index.html", {"mensaje":"Error, datos incorrectos"})          
         else:
