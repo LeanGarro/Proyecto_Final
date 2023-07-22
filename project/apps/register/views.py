@@ -3,14 +3,12 @@ from .models import UsuarioRegister
 from.forms import UsuarioForms, ReservaForms, UsuarioReserva
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
 
 from . import forms
 
 # Create your views here.
 name = "register"
-
-def login_home(request):
-    return render(request, "register/login.html")
 
 def formulario_registro(request):
     if request.method == "POST":
@@ -28,6 +26,7 @@ def formulario_registro(request):
     
     return render(request, 'register/register.html', {"formulario_register": formulario_register})
 
+@login_required
 def formulario_reservar(request):
     if request.method == "POST":
         formulario_reservar = ReservaForms(request.POST)

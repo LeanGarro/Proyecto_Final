@@ -14,6 +14,7 @@ urlpatterns = [
     path("about/", TemplateView.as_view(template_name="home/about.html"), name= "about"),
     path("logout/", LogoutView.as_view(template_name="home/logout.html"), name= "logout"),
     path("perfil/", TemplateView.as_view(template_name="home/perfil.html"), name= "perfil"),
+    path("aviso/", TemplateView.as_view(template_name="home/aviso_login.html"), name= "aviso"),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

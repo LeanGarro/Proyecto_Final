@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 from django.core.management.utils import get_random_secret_key
-
+from django.urls import reverse_lazy
 
 
 from pathlib import Path
@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.home',
     'apps.register',
-    
 ]
 
 
@@ -132,3 +131,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_URL = reverse_lazy("home:aviso")
+LOGIN_REDIRECT_URL = reverse_lazy("home:login")
