@@ -1,30 +1,27 @@
 from django.shortcuts import render
-from .models import UsuarioRegister
-from.forms import UsuarioForms, ReservaForms, UsuarioReserva
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from django.contrib.auth import login, logout, authenticate
+from.forms import ReservaForms, UsuarioReserva
+from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
-
-from . import forms
+from .forms import CustomUserRegisterForm, CustomAutentificationUser
 
 # Create your views here.
 name = "register"
 
-def formulario_registro(request):
+def register(request):
     if request.method == "POST":
-        formulario_register = UsuarioForms(request.POST)
-        if formulario_register.is_valid():
-            info = formulario_register.cleaned_data
-            registro = UsuarioRegister(nombre= info['nombre'], apellido = info['apellido'], nacimiento = info['nacimiento'], usuario = info['usuario'], possword = info['possword'], pais = info['pais'], sexo = info['sexo'])          
-
-            registro.save()
-            
-            return render(request, 'home/index.html')
-    
+        print("paso el post")
+        form= CustomUserRegisterForm(request.POST)
+        if form.is_valid():
+            print("paso el is valid")
+            usuario= form.cleaned_data["username"]
+            form.save()
+            return render(request, "home/index.html", {"mensaje":"🥳te registraste correctamente🥳"})
+        else:
+            return render(request, "home/index.html", {"mensaje": "Hubo un error"})
     else:
-        formulario_register = UsuarioForms()
-    
-    return render(request, 'register/register.html', {"formulario_register": formulario_register})
+        form= CustomUserRegisterForm()
+
+    return render(request, "register/register.html", {'form_register':form})
 
 @login_required
 def formulario_reservar(request):
@@ -46,7 +43,7 @@ def formulario_reservar(request):
 def Login(request):
     if request.method == "POST":
         
-        form= AuthenticationForm(request, data= request.POST)
+        form= CustomAutentificationUser(request, data= request.POST)
         if form.is_valid():
             
             user_name= form.cleaned_data.get("username")
@@ -62,6 +59,6 @@ def Login(request):
             
             return render(request, "home/index.html", {"mensaje": "Error, formulario erroneo"})
     else:
-        form= AuthenticationForm()
+        form= CustomAutentificationUser()
     
     return render(request, "register/login.html", {'form_login':form})

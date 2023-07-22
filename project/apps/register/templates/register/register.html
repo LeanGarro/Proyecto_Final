@@ -1,5 +1,3 @@
-
-
     {% extends 'home/index.html' %}
 
     {% block CONTENIDO_INDEX %}
@@ -7,7 +5,8 @@
     <h1 class="text-center my-auto ">Registrate</h1>
     <h3 class="text-center">Llene el formulario con sus datos para poder registrarse</h3>
 
-    <form action="/registrado/" method="POST">{% csrf_token %}
+    <form action="/" method="POST">
+        {% csrf_token %}
 
         <div class="container">
             <div class=" m-4 " style="height: 230px;">
@@ -15,13 +14,13 @@
 
                     <table class="container text-center form-control-lg">
        
-                        {{ formulario_register.as_table }}
+                        {{ form_register.as_p }}
             
                     </table>
 
                 </div>
             </div>
-            
+            <br> <br>
             <p class="container text-center ">
 
                 <button type="submit" class="my-4 btn btn-primary">Registrarse</button>       

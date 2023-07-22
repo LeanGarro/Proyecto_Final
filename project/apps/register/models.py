@@ -43,3 +43,5 @@ class UsuarioReserva(models.Model):
     def __str__(self) -> str:
         return f"atendido: {self.atendido_r} | {self.nombre_r} {self.apellido_r}"
     
+
+    
