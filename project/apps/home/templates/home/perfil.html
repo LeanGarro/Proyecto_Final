@@ -1,9 +1,27 @@
 {% extends 'home/index.html' %}
 
     {% block CONTENIDO_INDEX %}
-        <div class="container text text-center ">
-            <div class="fs-2 m-2">
-                Hola {{user.username}}
+        <header class="py-5 bg-image-full" style="background-image: url('https://source.unsplash.com/wfh8dDlNFOk/1600x900')">
+            <div class="text-center my-5">
+                <img class="img-fluid rounded-circle mb-4" src="https://dummyimage.com/150x150/6c757d/dee2e6.jpg" alt="..." />
+                <h1 class="text-white fs-3 fw-bolder">Hola {{user.username}}</h1>
             </div>
-        </div>
+        </header>
+        <section class="py-5">
+            <div class="container my-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <h2>Sobre mi</h2>
+                        <div class="container border border-primary border-2">
+                            <div class="fs-5">
+                                <p class="mb-2">Nombre: {{user.first_name}}</p>
+                                <p class="mb-2">apellido: {{user.last_name}}</p>
+                                <p class="mb-2">email: {{user.email}}</p>
+                                <p class="mb-2">ultima sesion: {{user.last_login}}</p>
+                                <p class="mb-2">cuenta creada el: {{user.date_joined}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
     {% endblock CONTENIDO_INDEX %}
