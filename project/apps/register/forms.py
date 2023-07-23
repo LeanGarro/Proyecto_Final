@@ -1,13 +1,8 @@
 from django import forms
-from .models import UsuarioRegister, UsuarioReserva
+from .models import UsuarioReserva
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-
-class UsuarioForms(forms.ModelForm):
-    class Meta:
-        model = UsuarioRegister
-        fields= '__all__'
 
 class ReservaForms(forms.ModelForm):
     class Meta:
