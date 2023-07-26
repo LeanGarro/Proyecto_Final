@@ -2,18 +2,23 @@
 
 {% block CONTENIDO_INDEX %}
     
-    <div>
+    <div class= "container">
+        <div>
+
         esto es listado de productos
 
         {% if object_list %}
+            {% for obj in object_list %}
+              {{obj}}
+            {% endfor %}
             
-            <p>Hay elementos</p>
 
         {% else %}
-            <p>No hay elementos</p>
+            <p>No hay elementos disponibles</p>
 
         {% endif %}
 
+        </div>
     </div>
 
 {% endblock CONTENIDO_INDEX %}
