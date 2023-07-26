@@ -4,6 +4,16 @@
     
     <div>
         esto es listado de productos
+
+        {% if object_list %}
+            
+            <p>Hay elementos</p>
+
+        {% else %}
+            <p>No hay elementos</p>
+
+        {% endif %}
+
     </div>
 
 {% endblock CONTENIDO_INDEX %}

@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from apps.register.views import Login, register, formulario_reservar
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("home.urls")),
@@ -25,6 +26,7 @@ urlpatterns = [
     path("login/", Login),
     path("reservas/", formulario_reservar),
     path("reservado/", formulario_reservar),
+
 ]
 
 from django.conf import settings

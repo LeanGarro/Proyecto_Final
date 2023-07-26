@@ -1,9 +1,8 @@
 from django.contrib import admin
 from . import models
 
-#admin.site.site_title("Productos")
+admin.site.site_title= "Productos"
 
-#admin.site.register(ProductoModel)
 
 @admin.register(models.ProductoModel)
 class ProductoModelAdmin(admin.ModelAdmin):

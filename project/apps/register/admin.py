@@ -2,7 +2,7 @@ from django.contrib import admin
 from . import models
 
 # Register your models here.
-#admin.site.register(models.UsuarioReserva)
+admin.site.site_title= "usuarios Registros"
 
 @admin.register(models.UsuarioReserva)
 class ProductoModelAdmin(admin.ModelAdmin):
