@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from apps.register.views import Login, register, formulario_reservar
-
+#from apps.productos import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,7 +26,7 @@ urlpatterns = [
     path("login/", Login),
     path("reservas/", formulario_reservar),
     path("reservado/", formulario_reservar),
-
+#    path("productos/", views.VerProductos),
 ]
 
 from django.conf import settings
