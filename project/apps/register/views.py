@@ -62,3 +62,4 @@ def Login(request):
         form= CustomAutentificationUser()
     
     return render(request, "register/login.html", {'form_login':form})
+
