@@ -1,0 +1,24 @@
+{% extends 'home/index.html' %}
+
+{% block CONTENIDO_INDEX %}
+    
+    <div class= "container">
+        <div>
+
+        esto es listado de productos
+
+        {% if object_list %}
+            {% for obj in object_list %}
+              {{obj}}
+            {% endfor %}
+            
+
+        {% else %}
+            <p>No hay elementos disponibles</p>
+
+        {% endif %}
+
+        </div>
+    </div>
+
+{% endblock CONTENIDO_INDEX %}

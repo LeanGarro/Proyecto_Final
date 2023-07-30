@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.home',
     'apps.register',
+    'apps.productos',
+
 ]
 
 
@@ -132,4 +134,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_URL = reverse_lazy("home:aviso")
+LOGIN_URL= reverse_lazy("home:aviso")
+
+MEDIA_URL= "/media/"
+MEDIA_ROOT= BASE_DIR / "media"
