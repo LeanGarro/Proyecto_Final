@@ -58,3 +58,4 @@ Le falta estilos para mejorar el aspecto.
 
 cosas a instalar en el entorno virtual:
 django: comando (win10): pip install django
+pillow: comando (win 10): pip install pillow

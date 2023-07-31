@@ -9,12 +9,13 @@ name = "register"
 
 def register(request):
     if request.method == "POST":
-        print("paso el post")
+        
         form= CustomUserRegisterForm(request.POST)
+        
         if form.is_valid():
-            print("paso el is valid")
             usuario= form.cleaned_data["username"]
             form.save()
+            
             return render(request, "home/index.html", {"mensaje":"🥳te registraste correctamente🥳"})
         else:
             return render(request, "home/index.html", {"mensaje": "Hubo un error"})
