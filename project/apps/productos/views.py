@@ -56,4 +56,16 @@ def ProductoCreated(request):
         
     return render(request, "productos/CreatedProducto.html", {"form_created": form})
             
-            
+def ProductoDetail(request, NameProducto):
+    """
+    productos= models.ProductoModel.objects.get(nombre= NameProducto)
+    context= {"product": productos}
+    return render(request, "productos/DetailProducto.html", context) 
+    """
+    producto= forms.ProductoModel.objects.get(nombre= NameProducto)
+    
+    form= forms.ProductoForms(initial={'nombre': producto.nombre, 'marca': producto.marca, 'proveedor': producto.proveedor,
+        'precio': producto.precio, 'descripcion': producto.descripcion, 'imagen': producto.imagen})
+        
+    return render(request, "productos/DetailProducto.html", {"form_detail": form})
+    

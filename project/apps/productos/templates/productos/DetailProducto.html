@@ -1,0 +1,17 @@
+{% extends 'home/index.html' %}
+
+{% block CONTENIDO_INDEX %}
+    
+    <div class="container text-center">
+        <form>
+            {% csrf_token %}
+
+            <table class="container text-center form-control-lg">
+           
+                {{ form_Detail.as_p }}
+    
+            </table>
+        </form>
+    </div>
+
+{% endblock CONTENIDO_INDEX %}
