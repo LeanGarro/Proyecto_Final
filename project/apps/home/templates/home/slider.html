@@ -1,16 +1,15 @@
-<button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    Detalles  {{titulo}}
+<button class="btn btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#slider{{SliderId}}" aria-expanded="false" aria-controls="collapseExample">
+    {{titulo}}
 </button>
 </p>
-<div class="collapse" id="collapseExample">
-<div class="card card-body">
+<div class="collapse" id="slider{{SliderId}}">
+<div class="">
     {{cuerpo}}
-
     nombre: {{obj.nombre}} <br>
     marca: {{obj.marca}} <br>
     proveedor: {{obj.proveedor}} <br>
     precio: {{obj.precio}} <br>
     descripcion: {{obj.descripcion}} <br>
-    imagen: {{obj.imagen}}
+    imagen: <img class="mx-auto d-block" height="70px" width="70px" src="{{ obj.imagen.url }}" alt=" ">
 </div>
 </div>

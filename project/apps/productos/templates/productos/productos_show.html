@@ -3,39 +3,37 @@
 {% block CONTENIDO_INDEX %}
     
     <div 
-    {% if user.is_staff %}  
-        class= "container fs-4 fw-medium bg-dark text-center text-bg-primary"
-    {% else %}
-        class= "container fs-4 fw-medium bg-secondary text-center text-bg-info"
-    {% endif %}>
+        {% if user.is_staff %}  
+            class= "container fs-4 fw-medium bg-dark text-center text-bg-primary"
+        {% else %}
+            class= "container fs-4 fw-medium bg-secondary text-center text-bg-info"
+        {% endif %}>
 
         <h2>listado de productos</h2>
         {% if user.is_staff %}
             <h2><a class="btn btn-warning" href="{% url 'CreatedProducto' %}">Agregar nuevo producto</a></h2> 
         {% endif %}
-        
-
+        <br>
         <div
-        {% if user.is_staff %}  
-            class= "border border-4 border-warning"
-        {% else %}
-            class= "border border-4 border-dark"
-        {% endif %}>
+            {% if user.is_staff %}  
+                class= "border border-4 border-warning mx-5"
+            {% else %}
+                class= "border border-4 border-dark mx-5 "
+            {% endif %}>
 
             {% if object_list %}
                 {% for obj in object_list %}
-                    <br>
                     {% if user.is_staff %}
                         <a class="btn btn-danger" href="{% url 'DeleteProducto' obj.nombre %}">Borrar</a> 
                     {% endif %}
 
-                        <img height="60px" src="{{ obj.imagen.url }}" alt=" ">  {{obj}}
-
+                        <img height="60px" width="60px" src="{{ obj.imagen.url }}" alt=" ">  {{obj}}>
+    
                         {% if user.is_staff %}
-                            <a class="btn btn-info" href="{% url 'UpdateProducto' obj.nombre %}">Editar</a>
+                            <a class="btn btn-success" href="{% url 'UpdateProducto' obj.nombre %}">Editar</a>
                         {% endif %}
-                        {% include 'home/slider.html' with titulo=hola %}
-                        
+
+                        {% include 'home/slider.html' with titulo="Detalles" SliderId=obj.id %}
                 {% endfor %}
     
             {% else %}
@@ -47,30 +45,3 @@
     </div>
 
 {% endblock CONTENIDO_INDEX %}
-
-{% comment %}
-    <a class="btn btn-info" href="{% url 'DetailProducto' obj.nombre %}">Detalles</a>
-    #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    <div class="accordion" id="accordionPanelsStayOpenExample">
-        <div class="">
-        <h2 class="accordion-header">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                <img height="10px" src="{{ obj.imagen }}">  {{obj}}
-            </button>
-        </h2>
-        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
-            <div class="accordion-body">
-            <strong>info</strong> <br>
-            nombre: {{obj.nombre}} <br>
-            marca: {{obj.marca}} <br>
-            proveedor: {{obj.proveedor}} <br>
-            precio: {{obj.precio}} <br>
-            descripcion: {{obj.descripcion}} <br>
-            imagen: {{obj.imagen}}
-            </div>
-        </div>
-    </div>
-
-
-{% endcomment %}
-
