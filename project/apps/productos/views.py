@@ -22,7 +22,7 @@ def ProductoUpdate(request, NameProducto):
     product= models.ProductoModel.objects.get(nombre= NameProducto)
     
     if request.method == "POST":
-        form= forms.ProductoForms(request.POST)
+        form= forms.ProductoForms(request.POST, request.FILES)
         
         if form.is_valid():
             info= form.cleaned_data
@@ -44,7 +44,7 @@ def ProductoUpdate(request, NameProducto):
 
 def ProductoCreated(request):
     if request.method == "POST":
-        form= forms.ProductoForms(request.POST)
+        form= forms.ProductoForms(request.POST, request.FILES)
         
         if form.is_valid():
             info= form.cleaned_data

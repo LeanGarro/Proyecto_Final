@@ -28,11 +28,14 @@
                     {% if user.is_staff %}
                         <a class="btn btn-danger" href="{% url 'DeleteProducto' obj.nombre %}">Borrar</a> 
                     {% endif %}
-                    <img height="10px" src="{{ obj.imagen }}">  {{obj}}
-                    {% if user.is_staff %}
-                        <a class="btn btn-info" href="{% url 'UpdateProducto' obj.nombre %}">Editar</a>
-                        <a class="btn btn-info" href="{% url 'DetailProducto' obj.nombre %}">Detalles</a>
-                    {% endif %}
+
+                        <img height="60px" src="{{ obj.imagen.url }}" alt=" ">  {{obj}}
+
+                        {% if user.is_staff %}
+                            <a class="btn btn-info" href="{% url 'UpdateProducto' obj.nombre %}">Editar</a>
+                        {% endif %}
+                        {% include 'home/slider.html' with titulo=hola %}
+                        
                 {% endfor %}
     
             {% else %}
@@ -44,3 +47,30 @@
     </div>
 
 {% endblock CONTENIDO_INDEX %}
+
+{% comment %}
+    <a class="btn btn-info" href="{% url 'DetailProducto' obj.nombre %}">Detalles</a>
+    #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    <div class="accordion" id="accordionPanelsStayOpenExample">
+        <div class="">
+        <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                <img height="10px" src="{{ obj.imagen }}">  {{obj}}
+            </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+            <div class="accordion-body">
+            <strong>info</strong> <br>
+            nombre: {{obj.nombre}} <br>
+            marca: {{obj.marca}} <br>
+            proveedor: {{obj.proveedor}} <br>
+            precio: {{obj.precio}} <br>
+            descripcion: {{obj.descripcion}} <br>
+            imagen: {{obj.imagen}}
+            </div>
+        </div>
+    </div>
+
+
+{% endcomment %}
+

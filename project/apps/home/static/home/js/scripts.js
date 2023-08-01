@@ -5,3 +5,20 @@
 */
 // This file is intentionally blank
 // Use this file to add JavaScript to your project
+
+let HideText_btn= document.getElementById('HideText_btn');
+
+let HideText= document.getElementById('HideText');
+
+HideText_btn.addEventListener('click', toggleText)
+
+function toggleText() {
+    HideText.classList.toggle('visible');
+
+    if (HideText.classList.contains("visible")) {
+        HideText_btn.innerHTML= "menos detalles";
+    }
+    else {
+        detalles
+    }
+}

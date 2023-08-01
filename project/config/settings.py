@@ -138,3 +138,5 @@ LOGIN_URL= reverse_lazy("home:aviso")
 
 MEDIA_URL= "/media/"
 MEDIA_ROOT= BASE_DIR / "media"
+
+ENCTYPE= "multipart/form-data"
