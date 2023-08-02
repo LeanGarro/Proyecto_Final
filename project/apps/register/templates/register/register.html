@@ -1,39 +1,35 @@
     {% extends 'home/index.html' %}
 
     {% block CONTENIDO_INDEX %}
+    {% if mensaje %}
+        <h3 class="container text-center alert alert-danger text-danger w-50">{{mensaje}}</h3>
+    {% endif %}
     
-    <h1 class="text-center my-auto ">Registrate</h1>
+    <h1 class="text-center my-auto">Registrate</h1>
     <h3 class="text-center">Llene el formulario con sus datos para poder registrarse</h3>
+    <p class="container text-center fw-bolder">
+        si ya tienes una cuenta puedes acceder haciendo click en el boton
+        <a class="btn btn-primary" href="/login/">Acceder</a>
+    </p>
 
-    <form action="" method="POST">
+    <form method="POST">
         {% csrf_token %}
 
-        <div class="container">
-            <div class=" m-4 " style="height: 230px;">
-                <div class="mx-auto my-auto" style="width: 280px; height: 100px;">
-
-                    <table class="container text-center form-control-lg">
-       
-                        {{ form_register.as_p }}
-            
-                    </table>
-
-                </div>
+        <div class="container w-50">
+            <div class="">
+                <table class="container text-center">
+    
+                    {{ form_register.as_p }}
+        
+                </table>
             </div>
-            <br> <br>
+            
             <p class="container text-center ">
-
-                <button type="submit" class="my-4 btn btn-primary">Registrarse</button>       
-                
+                <button type="submit" class="my-1 btn btn-primary">Registrarse</button>       
             </p>
-            <p class="container text-center fw-bolder">
-                si ya tienes una cuenta puedes acceder haciendo click en el boton
-                <br>
-                <a class="btn btn-primary " href="/login/">Acceder</a>
 
-            </p>         
+                     
         </div>
-
     </form>
     
     {% endblock CONTENIDO_INDEX %}

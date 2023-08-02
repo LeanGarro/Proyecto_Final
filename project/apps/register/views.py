@@ -18,7 +18,7 @@ def register(request):
             
             return render(request, "home/index.html", {"mensaje":"🥳te registraste correctamente🥳"})
         else:
-            return render(request, "home/index.html", {"mensaje": "Hubo un error"})
+            return render(request, "register/register.html", {"mensaje": "Hubo un error"})
     else:
         form= CustomUserRegisterForm()
 

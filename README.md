@@ -61,8 +61,12 @@ django: comando (win10): pip install django
 pillow: comando (win 10): pip install pillow
 
 anotaciones para el creador:
-resolver:/  *le falta corregir el bug de las imagenes en el CRUD de Productos*
+resuelto:/  *le falta corregir el bug de las imagenes en el CRUD de Productos*
+
 le falta poner la variable cuerpo del slider.html el el html productos_show
+le falta poner las URLs del CRUD de productos en la APP de producto
 le falta hacer el crud en el Perfil
 le falta agregar para que el usuario pueda elegir su foto de perfi
-le falta agregar al formulario de "Registrate" los campos de apellido y nombre los cuales no deben ser opcionales y el email hay que hacerlo que no sea opcional
+le falta crear proveedores
+
+resuelto:/  *le falta agregar al formulario de "Registrate" los campos de apellido y nombre los cuales no deben ser opcionales y el email hay que hacerlo que no sea opcional*
