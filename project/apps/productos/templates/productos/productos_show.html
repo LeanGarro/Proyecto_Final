@@ -27,7 +27,7 @@
                         <a class="btn btn-danger" href="{% url 'DeleteProducto' obj.nombre %}">Borrar</a> 
                     {% endif %}
 
-                        <img height="60px" width="60px" src="{{ obj.imagen.url }}" alt=" ">  {{obj}}>
+                        <img height="60px" width="60px" src="{{ obj.imagen.url }}" alt=" ">  {{obj}}
     
                         {% if user.is_staff %}
                             <a class="btn btn-success" href="{% url 'UpdateProducto' obj.nombre %}">Editar</a>

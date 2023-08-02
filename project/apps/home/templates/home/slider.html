@@ -5,11 +5,16 @@
 <div class="collapse" id="slider{{SliderId}}">
 <div class="">
     {{cuerpo}}
-    nombre: {{obj.nombre}} <br>
-    marca: {{obj.marca}} <br>
-    proveedor: {{obj.proveedor}} <br>
-    precio: {{obj.precio}} <br>
-    descripcion: {{obj.descripcion}} <br>
+    <div class="container border border-dark w-75 text-center">
+        <div class="container border {% if  user.is_staff%}border-warning {% else %}border-dark{% endif %} w-50 text-center">
+            nombre: {{obj.nombre}} <br>
+            marca: {{obj.marca}} <br>
+            proveedor: {{obj.proveedor}} <br>
+            precio: {{obj.precio}} <br>
+        </div>
+        descripcion:<div class="container border {% if  user.is_staff%}border-warning {% else %}border-dark{% endif %} w-50 text-center my-2"> {{obj.descripcion}} <br></div>
+    </div>
+    
     imagen: <img class="mx-auto d-block" height="70px" width="70px" src="{{ obj.imagen.url }}" alt=" ">
 </div>
 </div>
