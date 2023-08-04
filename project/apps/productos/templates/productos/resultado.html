@@ -1,6 +1,6 @@
 {% extends 'home/index.html' %}
 
-{% block CONTENIDO_INDEX %}
+{% block CONTENIDO_INDEX %}   
 
     <div 
         {% if user.is_staff %}  
@@ -23,8 +23,8 @@
 
             {% include 'productos/SearchProducto.html' %}
 
-            {% if object_list %}
-                {% for obj in object_list %}
+            {% if BusquedaProductos %}
+                {% for obj in BusquedaProductos %}
                     {% if user.is_staff %}
                         <a class="btn btn-danger" href="{% url 'DeleteProducto' obj.nombre %}">Borrar</a> 
                     {% endif %}

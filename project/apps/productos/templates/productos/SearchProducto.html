@@ -1,0 +1,12 @@
+
+    <div class="container text-center mx-5 ">
+        <form class= "mx-5" action="/buscar/" method="GET">
+            {% csrf_token %}
+            
+            <div class="container row my-3 mx-5">
+                <input class="form-control w-50 dropup-center col-10" type="text" name="BuscarProductos" id="BuscarProductos" placeholder= "Serch...">
+                
+                <input class="btn btn-primary col-2" type="submit" value="Buscar">
+            </div>
+        </form>
+    </div>

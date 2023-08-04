@@ -1,8 +1,10 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 from . import models
 from . import forms
 
 # Create your views here.
+
 
 def VerProductos(request):
     productos= models.ProductoModel.objects.all()
@@ -68,4 +70,15 @@ def ProductoDetail(request, NameProducto):
         'precio': producto.precio, 'descripcion': producto.descripcion, 'imagen': producto.imagen})
         
     return render(request, "productos/DetailProducto.html", {"form_detail": form})
-    
+
+def ProductoSearch(request):
+    return render(request, "productos/SearchProducto.html")
+
+def Search(request):
+    if request.GET["BuscarProductos"]:
+        buscar= request.GET["BuscarProductos"]
+        productos= models.ProductoModel.objects.filter(nombre__icontains= buscar)
+        context= {"BusquedaProductos": productos, "buscar":buscar}
+        return render(request, "productos/resultado.html", context)
+    else:
+        return render(request, "productos/productos_show.html")

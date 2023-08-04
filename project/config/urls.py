@@ -27,10 +27,11 @@ urlpatterns = [
     path("reservas/", formulario_reservar),
     path("reservado/", formulario_reservar),
     path("productos/", views.VerProductos),
-    path("productos/detail/<NameProducto>/", views.ProductoDetail, name= "DetailProducto"),
     path("productos/created/", views.ProductoCreated, name= "CreatedProducto"),
     path("productos/delete/<NameProducto>/", views.ProductoDelete, name= "DeleteProducto"),
     path("productos/update/<NameProducto>/", views.ProductoUpdate, name= "UpdateProducto"),
+    path("buscar/", views.Search),
+    path("buscarproducto/", views.ProductoSearch, name= "SearchProducto"),
     
 ]
 
