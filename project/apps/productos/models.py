@@ -13,3 +13,6 @@ class ProductoModel(models.Model):
 
     def __str__(self) -> str:
         return f"{self.nombre} | marca: {self.marca} | precio: {self.precio}"
+    
+    class Meta:
+        app_label = "productos"

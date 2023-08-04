@@ -6,7 +6,7 @@ admin.site.site_title= "Proveedores"
 
 @admin.register(models.Proveedores)
 class ProductoModelAdmin(admin.ModelAdmin):
-    list_display= ("nombre", "empresa")
-    list_filter= ("nombre", "empresa")
+    list_display= ("nombre", "empresa",)
+    list_filter= ("empresa",)
     search_fields= ("nombre", "descripcion",)
     ordering= ("nombre",)
