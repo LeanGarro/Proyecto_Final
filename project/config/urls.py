@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from apps.register.views import Login, register, formulario_reservar
 from apps.productos import views
+#from apps.proveedores.views import VerProveedores
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -33,6 +34,8 @@ urlpatterns = [
     path("buscar/", views.Search),
     path("buscarproducto/", views.ProductoSearch, name= "SearchProducto"),
     
+    
+#    path("proveedores/", VerProveedores, name= "lista_de_proveedores"),
 ]
 
 from django.conf import settings

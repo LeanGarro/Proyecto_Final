@@ -2,12 +2,9 @@ from django.urls import path
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.generic import TemplateView
 from django.contrib.auth.views import LogoutView
-
-
 from .views import Home
 
 app_name = "home"
-
 
 urlpatterns = [
     path("", Home, name="home"),

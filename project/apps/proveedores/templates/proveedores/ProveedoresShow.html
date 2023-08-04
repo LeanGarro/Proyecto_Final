@@ -1,0 +1,53 @@
+{% comment  %}
+
+{% extends 'home/index.html' %}
+
+{% block CONTENIDO_INDEX %}
+
+    <div 
+        {% if user.is_staff %}  
+            class= "container fs-4 fw-medium bg-dark text-center text-bg-primary"
+        {% else %}
+            class= "container fs-4 fw-medium bg-secondary text-center text-bg-info"
+        {% endif %}>
+
+        <h2>listado de Proveedores</h2>
+        {% if user.is_staff %}
+            <h2><a class="btn btn-warning" href="{% url 'CreatedProducto' %}">Agregar nuevo Proveedor</a></h2> 
+        {% endif %}
+        <br>
+        <div
+            {% if user.is_staff %}  
+                class= "border border-4 border-warning mx-5"
+            {% else %}
+                class= "border border-4 border-dark mx-5 "
+            {% endif %}>
+
+            {% include 'productos/SearchProducto.html' %}
+
+            {% if proveedores_list %}
+                {% for obj in proveedores_list %}
+                    {% if user.is_staff %}
+                        <a class="btn btn-danger" href="{% url 'DeleteProducto' obj.nombre %}">Borrar</a> 
+                    {% endif %}
+
+                    <img height="60px" width="60px" src="{{ obj.imagen.url }}" alt=" ">  {{obj}}
+
+                    {% if user.is_staff %}
+                        <a class="btn btn-success" href="{% url 'UpdateProducto' obj.nombre %}">Editar</a>
+                    {% endif %}
+
+                    {% include 'home/slider.html' with titulo="Detalles" SliderId=obj.id %}
+                {% endfor %}
+    
+            {% else %}
+                <p>No hay elementos disponibles</p>
+            {% endif %}
+            
+        </div>
+        <br>
+    </div>
+
+{% endblock CONTENIDO_INDEX %}
+
+{% endcomment %}

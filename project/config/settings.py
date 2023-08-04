@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'apps.home',
     'apps.register',
     'apps.productos',
+    'apps.proveedores',
 
 ]
 
