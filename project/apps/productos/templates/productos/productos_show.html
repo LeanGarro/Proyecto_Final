@@ -11,7 +11,7 @@
 
         <h2>listado de productos</h2>
         {% if user.is_staff %}
-            <h2><a class="btn btn-warning" href="{% url 'productos:CreatedProducto' %}">Agregar nuevo producto</a></h2> 
+            <h2><a class="btn btn-warning" href="{% url 'apps.productos:CreatedProducto' %}">Agregar nuevo producto</a></h2> 
         {% endif %}
         <br>
         <div
@@ -25,17 +25,18 @@
 
             {% if object_list %}
                 {% for obj in object_list %}
+                    
                     {% if user.is_staff %}
-                        <a class="btn btn-danger" href="{% url 'productos:DeleteProducto' obj.nombre %}">Borrar</a> 
+                    <a class="btn btn-danger" href="{% url 'apps.productos:DeleteProducto' obj.nombre %}">Borrar</a> 
                     {% endif %}
-
+                    
                     <img height="60px" width="60px" src="{{ obj.imagen.url }}" alt=" ">  {{obj}}
-
+                    
                     {% if user.is_staff %}
-                        <a class="btn btn-success" href="{% url 'productos:UpdateProducto' obj.nombre %}">Editar</a>
+                    <a class="btn btn-success" href="{% url 'apps.productos:UpdateProducto' obj.nombre %}">Editar</a>
                     {% endif %}
-
-                    {% include 'home/slider.html' with titulo="Detalles" SliderId=obj.id %}
+                    
+                    {% include 'home/slider.html' with titulo="Detalles" SliderId=obj.id cuerpo=obj%}
                 {% endfor %}
     
             {% else %}
@@ -47,3 +48,6 @@
     </div>
 
 {% endblock CONTENIDO_INDEX %}
+
+
+

@@ -1,27 +1,27 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from . import models
+from .models import ProductoModel
 from . import forms
 
 # Create your views here.
 
 
 def VerProductos(request):
-    productos= models.ProductoModel.objects.all()
+    productos= ProductoModel.objects.all()
     context= {"object_list": productos}
     return render(request, "productos/productos_show.html", context)
 
 def ProductoDelete(request, NameProducto):
-    product= models.ProductoModel.objects.get(nombre= NameProducto)
+    product= ProductoModel.objects.get(nombre= NameProducto)
     product.delete()
     
-    products= models.ProductoModel.objects.all()
+    products= ProductoModel.objects.all()
     context= {"object_list": products}
     
     return render(request, "productos/productos_show.html", context)
 
 def ProductoUpdate(request, NameProducto):
-    product= models.ProductoModel.objects.get(nombre= NameProducto)
+    product= ProductoModel.objects.get(nombre= NameProducto)
     
     if request.method == "POST":
         form= forms.ProductoForms(request.POST, request.FILES)
@@ -60,11 +60,11 @@ def ProductoCreated(request):
             
 def ProductoDetail(request, NameProducto):
     """
-    productos= models.ProductoModel.objects.get(nombre= NameProducto)
+    productos= ProductoModel.objects.get(nombre= NameProducto)
     context= {"product": productos}
     return render(request, "productos/DetailProducto.html", context) 
     """
-    producto= forms.ProductoModel.objects.get(nombre= NameProducto)
+    producto= ProductoModel.objects.get(nombre= NameProducto)
     
     form= forms.ProductoForms(initial={'nombre': producto.nombre, 'marca': producto.marca, 'proveedor': producto.proveedor,
         'precio': producto.precio, 'descripcion': producto.descripcion, 'imagen': producto.imagen})
@@ -77,7 +77,7 @@ def ProductoSearch(request):
 def Search(request):
     if request.GET["BuscarProductos"]:
         buscar= request.GET["BuscarProductos"]
-        productos= models.ProductoModel.objects.filter(nombre__icontains= buscar)
+        productos= ProductoModel.objects.filter(nombre__icontains= buscar)
         context= {"BusquedaProductos": productos, "buscar":buscar}
         return render(request, "productos/resultado.html", context)
     else:

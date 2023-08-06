@@ -16,22 +16,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from apps.register.views import Login, register, formulario_reservar
-from apps.productos import views
-#from apps.proveedores.views import VerProveedores
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("home.urls")),
-    path("register/", register),
-    path("login/", Login),
-    path("reservas/", formulario_reservar),
-    path("reservado/", formulario_reservar),
-    path("productos/", views.VerProductos),
+    path("register/", include("apps.register.urls")),
+    path("productos/", include("apps.productos.urls")),
 
 
-#    path("proveedores/", VerProveedores, name= "lista_de_proveedores"),
 ]
+
 
 from django.conf import settings
 from django.conf.urls.static import static

@@ -7,7 +7,7 @@
     <p></p>
     <h2 class="text-center">Rellena el formulario</h2>
 
-    <form action="/reservado/" method="post">
+    <form action={% url 'apps.register:Reservado' %} method="post">
         {% csrf_token %}
         
         <div class="container col-auto">
