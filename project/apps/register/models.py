@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+
     
 class UsuarioReserva(models.Model):
     atendido_r = models.BooleanField(default=False, verbose_name='atendido?')
@@ -12,4 +14,6 @@ class UsuarioReserva(models.Model):
         return f"atendido: {self.atendido_r} | {self.nombre_r} {self.apellido_r}"
     
 
-    
+class UserCustom(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    avatar= models.ImageField(upload_to= "img_producto", blank= False, null= False)

@@ -63,14 +63,14 @@ pillow: comando (win 10): pip install pillow
 
 anotaciones para el creador:
 resuelto:/  *le falta corregir el bug de las imagenes en el CRUD de Productos*
-
-(no es muy nesesario) le falta poner la variable cuerpo del slider.html el el html productos_show
-le falta poner las URLs del CRUD de productos en la APP de producto
-
+resuelto:/  *(no es muy nesesario) le falta poner la variable cuerpo del slider.html el el html productos_show*
+resuelto:/  *le falta poner las URLs del CRUD de productos en la APP de producto*
 resuelto:/  *le falta hacer un buscador de elementos en el CRUD de productos*
 
-le falta hacer el CRUD en el Perfil
-le falta agregar para que el usuario pueda elegir su foto de perfi
-le falta crear proveedores con su CRUD pertinente
 
+le falta hacer el CRUD en el Perfil
+le falta agregar para que el usuario pueda elegir su foto de perfil
+
+
+resuelto:/  *le falta crear proveedores con su CRUD pertinente*
 resuelto:/  *le falta agregar al formulario de "Registrate" los campos de apellido y nombre los cuales no deben ser opcionales y el email hay que hacerlo que no sea opcional*

@@ -7,11 +7,13 @@ from . import forms
 
 
 def VerProductos(request):
+    """ la funcionalidad de esta vista es mostrar todos los productos gracias al for ubidado en el HTML el cual trabaja con los datos que le pasa esta funcion """
     productos= ProductoModel.objects.all()
     context= {"object_list": productos}
     return render(request, "productos/productos_show.html", context)
 
 def ProductoDelete(request, NameProducto):
+    """ esta funcion elimina a el producto seleccionado en el HTML """
     product= ProductoModel.objects.get(nombre= NameProducto)
     product.delete()
     
@@ -21,6 +23,7 @@ def ProductoDelete(request, NameProducto):
     return render(request, "productos/productos_show.html", context)
 
 def ProductoUpdate(request, NameProducto):
+    """ esta funcion actualiza a el producto seleccionado en el HTML gracias a un formulario """
     product= ProductoModel.objects.get(nombre= NameProducto)
     
     if request.method == "POST":
@@ -45,6 +48,7 @@ def ProductoUpdate(request, NameProducto):
     return render(request, "productos/EditarProducto.html", {"form_edit": form, "NameProducto": NameProducto})
 
 def ProductoCreated(request):
+    """ esta funcion crea un producto nuevo gracias a un formulario """
     if request.method == "POST":
         form= forms.ProductoForms(request.POST, request.FILES)
         
@@ -57,13 +61,8 @@ def ProductoCreated(request):
         form= forms.ProductoForms()
         
     return render(request, "productos/CreatedProducto.html", {"form_created": form})
-            
+
 def ProductoDetail(request, NameProducto):
-    """
-    productos= ProductoModel.objects.get(nombre= NameProducto)
-    context= {"product": productos}
-    return render(request, "productos/DetailProducto.html", context) 
-    """
     producto= ProductoModel.objects.get(nombre= NameProducto)
     
     form= forms.ProductoForms(initial={'nombre': producto.nombre, 'marca': producto.marca, 'proveedor': producto.proveedor,
@@ -72,9 +71,11 @@ def ProductoDetail(request, NameProducto):
     return render(request, "productos/DetailProducto.html", {"form_detail": form})
 
 def ProductoSearch(request):
+    """ esta funcion muestra la barra de busqueda en el HTML """
     return render(request, "productos/SearchProducto.html")
 
 def Search(request):
+    """ esta funcion busca un producto en especifico en la DB y lo muestra en el HTML """
     if request.GET["BuscarProductos"]:
         buscar= request.GET["BuscarProductos"]
         productos= ProductoModel.objects.filter(nombre__icontains= buscar)

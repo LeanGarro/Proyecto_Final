@@ -1,6 +1,6 @@
 {% extends 'home/index.html' %}
 
-{% block CONTENIDO_INDEX %}
+{% block CONTENIDO_INDEX %}   
 
     <div 
         {% if user.is_staff %}  
@@ -9,9 +9,9 @@
             class= "container fs-4 fw-medium bg-secondary text-center text-bg-info"
         {% endif %}>
 
-        <h2>listado de productos</h2>
+        <h2>listado de Proveedores</h2>
         {% if user.is_staff %}
-            <h2><a class="btn btn-warning" href="{% url 'apps.productos:CreatedProducto' %}">Agregar nuevo producto</a></h2> 
+            <h2><a class="btn btn-warning" href="{% url 'apps.proveedores:CreatedProveedores' %}">Agregar nuevo producto</a></h2> 
         {% endif %}
         <br>
         <div
@@ -21,22 +21,21 @@
                 class= "border border-4 border-dark mx-5 "
             {% endif %}>
 
-            {% include 'productos/SearchProducto.html' %}
+            {% include 'proveedores/SearchBar.html' %}
 
-            {% if object_list %}
-                {% for obj in object_list %}
-                    
+            {% if BusquedaProveedores %}
+                {% for obj in BusquedaProveedores %}
                     {% if user.is_staff %}
-                    <a class="btn btn-danger" href="{% url 'apps.productos:DeleteProducto' obj.nombre %}">Borrar</a> 
+                        <a class="btn btn-danger" href="{% url 'apps.proveedores:DeleteProveedores' obj.nombre %}">Borrar</a> 
                     {% endif %}
-                    
+
                     <img height="60px" width="60px" src="{{ obj.imagen.url }}" alt=" ">  {{obj}}
-                    
+
                     {% if user.is_staff %}
-                    <a class="btn btn-success" href="{% url 'apps.productos:UpdateProducto' obj.nombre %}">Editar</a>
+                        <a class="btn btn-success" href="{% url 'apps.proveedores:UpdateProveedores' obj.nombre %}">Editar</a>
                     {% endif %}
-                    
-                    {% include 'productos/SliderProducto.html' with titulo="Detalles" SliderId=obj.id%}
+
+                    {% include 'proveedores/SliderProveedores.html' with titulo="Detalles" SliderId=obj.id %}
                 {% endfor %}
     
             {% else %}
@@ -48,6 +47,3 @@
     </div>
 
 {% endblock CONTENIDO_INDEX %}
-
-
-

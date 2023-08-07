@@ -1,0 +1,19 @@
+{% extends 'home/index.html' %}
+
+{% block CONTENIDO_INDEX %}
+    
+    <div class="container text-center">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <table class="container text-center form-control-lg">
+           
+                {{ form_provedores.as_p }}
+    
+            </table>
+    
+            <button type="submit" class="my-4 btn btn-primary">Editar</button>
+        </form>
+    </div>
+
+{% endblock CONTENIDO_INDEX %}
