@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from . import models
 from . import forms
 
@@ -9,6 +10,7 @@ def VerProveedores(request):
     context= {"proveedores_list": Proveedores}
     return render(request, "proveedores/ProveedoresShow.html", context)
 
+@login_required
 def DeleteProveedores(request, NameProveedor):
     """ ests funcion elimina a el proveedor seleccionado en el HTML """
     proveedor= models.Proveedores.objects.get(nombre= NameProveedor)
@@ -18,13 +20,14 @@ def DeleteProveedores(request, NameProveedor):
     context= {"proveedores_list": Proveedores}
     return render(request, "proveedores/ProveedoresShow.html", context)
 
+@login_required
 def UpdateProveedores(request, NameProveedor):
     """ esta funcion actualiza a el proveedor seleccionado en el HTML gracias a un formulario """
     proveedor= models.Proveedores.objects.get(nombre= NameProveedor)
     
     if request.method == "POST" :
         form= forms.ProveedoresForm(request.POST, request.FILES)
-        print("paso el if")
+        
         
         if form.is_valid():
             info= form.cleaned_data
@@ -36,16 +39,15 @@ def UpdateProveedores(request, NameProveedor):
             proveedor.imagen= info['imagen']
             
             proveedor.save()
-            return render(request, "home/index.html")
-        else:
-            print("fallo el is valid")
+            return render(request, "home/index.html")          
     else:
-        print("fallo el else")
+        
         form= forms.ProveedoresForm(initial={'nombre': proveedor.nombre, 'apellidos': proveedor.apellidos, 'email': proveedor.email,
         'empresa': proveedor.empresa, 'descripcion': proveedor.descripcion, 'imagen': proveedor.imagen})
     
     return render(request, "proveedores/UpdateProveedores.html", {"form_provedores": form, "NameProducto": NameProveedor})
 
+@login_required
 def CreatedProveedores(request):
     if request.method == "POST":
         form= forms.ProveedoresForm(request.POST, request.FILES)

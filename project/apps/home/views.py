@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from apps.register.models import UserCustom
 # Create your views here.
 
 def Home(request):
@@ -7,4 +8,8 @@ def Home(request):
 
 @login_required
 def Perfil(request):
-    return render(request, "home/perfil.html")
+    if UserCustom.objects.get(user=request.user) == None:
+        context= {"CustomUser": UserCustom.objects.get(user=request.user)}
+    else:
+        context= {"CustomUser": "algo"}
+    return render(request, "home/perfil.html", context)

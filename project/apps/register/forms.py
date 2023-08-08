@@ -1,5 +1,5 @@
 from django import forms
-from .models import UsuarioReserva
+from .models import UsuarioReserva, UserCustom
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
@@ -32,3 +32,8 @@ class CustomUserRegisterForm(UserCreationForm):
             #"password1": forms.PasswordInput(attrs={"class": "form-control m-1", "placeholder":"Contraseña"}),
 
         }
+
+class UserCustomForm(forms.ModelForm):
+    class Meta:
+        model= UserCustom
+        fields= ["avatar"]

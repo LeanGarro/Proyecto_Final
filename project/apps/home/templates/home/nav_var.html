@@ -9,8 +9,8 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> productos
                 <li class="nav-item"><a class="nav-link {% if  request.path == "/"%}active{% endif %}" href="/">Inicio</a></li>
-                <li class="nav-item"><a class="nav-link {% if  request.path == "/productos/"%}active{% endif %}" href={% url 'apps.productos:lista_de_productos' %}  >Productos</a></li>
-                <li class="nav-item"><a class="nav-link {% if  request.path == "/proveedores/"%}active{% endif %}" href={% url 'apps.proveedores:Proveedores' %}  >Proveedores</a></li>
+                <li class="nav-item"><a class="nav-link {% if  request.path == "/productos/productos/"%}active{% endif %}" href={% url 'apps.productos:lista_de_productos' %}  >Productos</a></li>
+                <li class="nav-item"><a class="nav-link {% if  request.path == "/proveedores/proveedores/"%}active{% endif %}" href={% url 'apps.proveedores:Proveedores' %}  >Proveedores</a></li>
 
 
                 {% if user.is_authenticated %}
@@ -19,8 +19,8 @@
                     {% else %}
                         <li class="nav-item"><a class="nav-link {% if  request.path == "/about/"%}active{% endif %}" href={% url 'home:about' %}>Nosotros</a></li>
                     {% endif %}
-                    <li class="nav-item"><a class="nav-link {% if  request.path == "/reservas/"%}active{% endif %}" href={% url 'apps.register:Reservar' %} >Reservar</a></li>
-                    <li class="nav-item"><a class="nav-link text-bg-info" href="/perfil/">{{user.username}} </a></li>    
+                    <li class="nav-item"><a class="nav-link {% if  request.path == "/register/reservas/"%}active{% endif %}" href={% url 'apps.register:Reservar' %} >Reservar</a></li>
+                    <li class="nav-item"><a class="nav-link text-bg-info" href="/perfil/">{{user.username}} </a></li>
                     <li class="nav-item"><a class="nav-link text-danger {% if  request.path == "/logout/"%}active{% endif %}" href="/logout/">Logout</a></li>    
                 {% else %}
                     <li class="nav-item"><a class="nav-link {% if  request.path == "/about/"%}active{% endif %}" href={% url 'home:about' %}>Nosotros</a></li>

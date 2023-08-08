@@ -9,6 +9,7 @@ urlpatterns = [
     path("login/", views.Login, name= "Login"),
     path("reservas/", views.formulario_reservar, name= "Reservar"),
     path("reservado/", views.formulario_reservar, name= "Reservado"),
+    path("update/avatar/", views.avatares, name= "UpdateAvatar"),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

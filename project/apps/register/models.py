@@ -16,4 +16,4 @@ class UsuarioReserva(models.Model):
 
 class UserCustom(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    avatar= models.ImageField(upload_to= "img_producto", blank= False, null= False)
+    avatar= models.ImageField(upload_to= "avatar", blank= False, null= False)

@@ -1,0 +1,19 @@
+{% extends 'home/index.html' %}
+
+    {% block CONTENIDO_INDEX %}
+        
+        <h1 class="text-center my-3">Avatar</h1>
+            
+        <div class="text-center my-3">
+
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+    
+                {{ form_avatar.as_p }}
+
+                <button type="submit" value="Actualizar" class="my-1 btn btn-primary">Cambiar Avatar</button>
+            </form>
+
+        </div>
+    
+    {% endblock CONTENIDO_INDEX %}

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import ProductoModel
 from . import forms
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -12,6 +13,7 @@ def VerProductos(request):
     context= {"object_list": productos}
     return render(request, "productos/productos_show.html", context)
 
+@login_required
 def ProductoDelete(request, NameProducto):
     """ esta funcion elimina a el producto seleccionado en el HTML """
     product= ProductoModel.objects.get(nombre= NameProducto)
@@ -22,6 +24,7 @@ def ProductoDelete(request, NameProducto):
     
     return render(request, "productos/productos_show.html", context)
 
+@login_required
 def ProductoUpdate(request, NameProducto):
     """ esta funcion actualiza a el producto seleccionado en el HTML gracias a un formulario """
     product= ProductoModel.objects.get(nombre= NameProducto)
@@ -47,6 +50,7 @@ def ProductoUpdate(request, NameProducto):
     
     return render(request, "productos/EditarProducto.html", {"form_edit": form, "NameProducto": NameProducto})
 
+@login_required
 def ProductoCreated(request):
     """ esta funcion crea un producto nuevo gracias a un formulario """
     if request.method == "POST":
