@@ -68,23 +68,57 @@ def Login(request):
     return render(request, "register/login.html", {'form_login':form})
 
 @login_required
-def avatares(request):   
-    if request.method == "POST":
-        avatar= models.UserCustom.objects.get(user= request.user)
-        form= UserCustomForm(request.POST, request.FILES)
-        
-        if form.is_valid():
-            
-            info= form.cleaned_data
-            user= User.objects.get(username= request.user)
-            avatar.avatar= info['avatar']
-            avatar.save()
-            
-            CustomUser= UserCustom.objects.get(user=request.user)
-            return render(request, "home/perfil.html", {"CustomUser":CustomUser})
-        
-    else:
-        form= UserCustomForm()
+def avatares(request):
+    try:
+        if UserCustom.DoesNotExist:
+            print("no !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+            if request.method == "POST":
+                    form= UserCustomForm(request.POST, request.FILES)
+                    if form.is_valid():
+                        user= User.objects.get(username= request.user)
+                        avatar= UserCustom(user=user, avatar=form.cleaned_data["avatar"])
+                        
+                        avatar.save()
+                        
+                        return render(request, "home/index.html")
+                    else:
+                        render(request, "register/reservar.html")
+            else:
+                form= UserCustomForm()
+
+        else:
+            if request.method == "POST":
+                    avatar= models.UserCustom.objects.get(user= request.user)
+                    form= UserCustomForm(request.POST, request.FILES)
+                    
+                    if form.is_valid():
+                        
+                        info= form.cleaned_data
+                        user= User.objects.get(username= request.user)
+                        avatar.avatar= info['avatar']
+                        avatar.save()
+                        
+                        CustomUser= UserCustom.objects.get(user=request.user)
+                        return render(request, "home/perfil.html", {"CustomUser":CustomUser})
+                    
+            else:
+                form= UserCustomForm()
+    except TypeError:
+        print("no !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+        if request.method == "POST":
+                form= UserCustomForm(request.POST, request.FILES)
+                if form.is_valid():
+                    user= User.objects.get(username= request.user)
+                    avatar= UserCustomForm(user=user, avatar=form.cleaned_data["avatar"])
+                    
+                    avatar.save()
+                    
+                    return render(request, "home/index.html")
+                else:
+                    render(request, "register/reservar.html")
+        else:
+            form= UserCustomForm()
 
     return render(request, "register/UpdateAvatar.html", {"form_avatar":form})
+
     

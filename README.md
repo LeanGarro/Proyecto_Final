@@ -34,17 +34,13 @@ Iniciar sesión = http://127.0.0.1:8000/login/
 
 Reservas = http://127.0.0.1:8000/reservas/ 
 
-Admin = http://127.0.0.1:8000/admin/ 
-
-Usuario: admin 
-
-Contraseña: 123 
+Admin = http://127.0.0.1:8000/admin/    (Usuario: admin | Contraseña: 123)
 
  
 
 Errores conocidos: 
 
-En la página Regístrate (en el código) se utilizan demasiados “<br>” para lograr que quede bien la página. 
+resuelto:/  *En la página Regístrate (en el código) se utilizan demasiados “<br>” para lograr que quede bien la página.*
 
 Los nombres de las apps no siguen las convenciones de django (no empiezan con mayúscula) 
 
@@ -71,6 +67,6 @@ resuelto:/  *le falta hacer un buscador de elementos en el CRUD de productos*
 le falta hacer el CRUD en el Perfil
 
 
-resuelto:/  *le falta agregar para que el usuario pueda elegir su foto de perfil*
+resuelto:/  *le falta agregar para que el usuario pueda elegir su foto de perfil (bugs si no tenes avatar anteriormente)*
 resuelto:/  *le falta crear proveedores con su CRUD pertinente*
 resuelto:/  *le falta agregar al formulario de "Registrate" los campos de apellido y nombre los cuales no deben ser opcionales y el email hay que hacerlo que no sea opcional*

@@ -22,9 +22,9 @@
                     <li class="nav-item"><a class="nav-link {% if  request.path == "/register/reservas/"%}active{% endif %}" href={% url 'apps.register:Reservar' %} >Reservar</a></li>
                     <li class="nav-item"><a class="nav-link text-bg-info" href="/perfil/">{{user.username}}
                     {% if user.UserCustom.avatar.url %}
-                        <li class="nav-item"><img src="{{user.UserCustom.avatar.url}}" style="height: 20px;" alt="tu avatar"></li>
+                        <li class="nav-item"><img class="rounded-5" src="{{user.UserCustom.avatar.url}}" style="height: 20px;" alt="tu avatar"></li>
                     {% else %}
-                        <li class="nav-item"><img src='{% static 'home/img/avatar.png' %}' style="height: 20px;" alt="tu avatar"></li> 
+                        <li class="nav-item"><img class="rounded-5" src='{% static 'home/img/avatar.png' %}' style="height: 20px;" alt="tu avatar"></li> 
                     {% endif %}</a></li>
 
                     <li class="nav-item"><a class="nav-link text-danger {% if  request.path == "/logout/"%}active{% endif %}" href="/logout/">Logout</a></li>    

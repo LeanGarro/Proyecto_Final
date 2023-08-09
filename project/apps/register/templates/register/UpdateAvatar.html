@@ -8,8 +8,8 @@
 
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-    
-                {{ form_avatar.as_p }}
+
+                    {{ form_avatar.as_p }}
 
                 <button type="submit" value="Actualizar" class="my-1 btn btn-primary">Cambiar Avatar</button>
             </form>
