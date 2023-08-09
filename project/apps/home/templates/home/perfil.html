@@ -3,8 +3,13 @@
 
     {% block CONTENIDO_INDEX %}
         <header class="py-5 bg-image-full " style="background-image: url('https://lc.cx/q6UdLy')" >
+            
             <div class="text-center my-5">
-                <img class="mx-auto d-block rounded-5" height="70px" width="70px" src="{{ CustomUser.avatar.url }}" alt="tu avatar">
+                {% if user.UserCustom.avatar.url %}
+                    <img class="mx-auto d-block rounded-5" height="70px" width="70px" src="{{CustomUser.avatar.url}}" alt="tu avatar">
+                {% else %}
+                    <img class="mx-auto d-block rounded-5" height="70px" width="70px" src='{% static 'home/img/avatar.png' %}' alt="tu avatar">
+                {% endif %}
                 <a href="{% url 'apps.register:UpdateAvatar' %}">✏️</a>
                 <h1 class="text-white fs-3 fw-bolder">Bienvenido, {{user.username}}</h1>
             </div>

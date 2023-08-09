@@ -8,8 +8,17 @@ def Home(request):
 
 @login_required
 def Perfil(request):
-    if UserCustom.objects.get(user=request.user) == None:
-        context= {"CustomUser": UserCustom.objects.get(user=request.user)}
-    else:
-        context= {"CustomUser": "algo"}
+    try:
+        user_custom = UserCustom.objects.get(user=request.user)
+        context= {"CustomUser": user_custom}
+    except UserCustom.DoesNotExist:
+        context= {"CustomUser": None}
     return render(request, "home/perfil.html", context)
+
+def NavBar(request):
+    try:
+        user_custom = UserCustom.objects.get(user=request.user)
+        context= {"CustomUser": user_custom}
+    except UserCustom.DoesNotExist:
+        context= {"CustomUser": None}
+    return render(request, "home/nav_var.html", context)

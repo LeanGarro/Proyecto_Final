@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from.forms import ReservaForms, UsuarioReserva, UserCustomForm
+from .forms import ReservaForms, UsuarioReserva, UserCustomForm, UserCustom
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from .forms import CustomUserRegisterForm, CustomAutentificationUser
@@ -11,8 +11,8 @@ from . import models
 name = "register"
 
 def register(request):
+    
     if request.method == "POST":
-        
         form= CustomUserRegisterForm(request.POST)
         
         if form.is_valid():
@@ -21,7 +21,7 @@ def register(request):
             
             return render(request, "home/index.html", {"mensaje":"🥳te registraste correctamente🥳"})
         else:
-            return render(request, "register/register.html", {"mensaje": "Hubo un error"})
+            return render(request, "register/register.html", {"mensaje": "Hubo un error", 'form_register':form})
     else:
         form= CustomUserRegisterForm()
 
@@ -68,49 +68,23 @@ def Login(request):
     return render(request, "register/login.html", {'form_login':form})
 
 @login_required
-def avatares(request):    
+def avatares(request):   
     if request.method == "POST":
+        avatar= models.UserCustom.objects.get(user= request.user)
         form= UserCustomForm(request.POST, request.FILES)
         
         if form.is_valid():
-            user= User.objects.get(username= request.user)            
-            avatar= models.UserCustom(user= user, avatar= form.cleaned_data['avatar'])
+            
+            info= form.cleaned_data
+            user= User.objects.get(username= request.user)
+            avatar.avatar= info['avatar']
             avatar.save()
             
-            
-            return render(request, "home/perfil.html")
+            CustomUser= UserCustom.objects.get(user=request.user)
+            return render(request, "home/perfil.html", {"CustomUser":CustomUser})
         
     else:
         form= UserCustomForm()
 
     return render(request, "register/UpdateAvatar.html", {"form_avatar":form})
-        
-
-"""
-def UpdateProveedores(request, NameProveedor):
-    proveedor= models.Proveedores.objects.get(nombre= NameProveedor)
     
-    if request.method == "POST" :
-        form= forms.ProveedoresForm(request.POST, request.FILES)
-        
-        
-        if form.is_valid():
-            info= form.cleaned_data
-            proveedor.nombre= info['nombre']
-            proveedor.apellidos= info['apellidos']
-            proveedor.email= info['email']
-            proveedor.empresa= info['empresa']
-            proveedor.descripcion= info['descripcion']
-            proveedor.imagen= info['imagen']
-            
-            proveedor.save()
-            return render(request, "home/index.html")          
-    else:
-        
-        form= forms.ProveedoresForm(initial={'nombre': proveedor.nombre, 'apellidos': proveedor.apellidos, 'email': proveedor.email,
-        'empresa': proveedor.empresa, 'descripcion': proveedor.descripcion, 'imagen': proveedor.imagen})
-    
-    return render(request, "proveedores/UpdateProveedores.html", {"form_provedores": form, "NameProducto": NameProveedor})
-
-
-"""

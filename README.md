@@ -69,8 +69,8 @@ resuelto:/  *le falta hacer un buscador de elementos en el CRUD de productos*
 
 
 le falta hacer el CRUD en el Perfil
-le falta agregar para que el usuario pueda elegir su foto de perfil
 
 
+resuelto:/  *le falta agregar para que el usuario pueda elegir su foto de perfil*
 resuelto:/  *le falta crear proveedores con su CRUD pertinente*
 resuelto:/  *le falta agregar al formulario de "Registrate" los campos de apellido y nombre los cuales no deben ser opcionales y el email hay que hacerlo que no sea opcional*
