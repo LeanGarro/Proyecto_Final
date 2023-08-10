@@ -6,11 +6,16 @@
             
             <div class="text-center my-5">
                 {% if user.UserCustom.avatar.url %}
-                    <img class="mx-auto d-block rounded-5" height="70px" width="70px" src="{{CustomUser.avatar.url}}" alt="tu avatar">
+                <img class="rounded-5" src="{{user.UserCustom.avatar.url}}" height="70px" width="70px" alt="tu avatar">
                 {% else %}
                     <img class="mx-auto d-block rounded-5" height="70px" width="70px" src='{% static 'home/img/avatar.png' %}' alt="tu avatar">
                 {% endif %}
-                <a href="{% url 'apps.register:UpdateAvatar' %}">✏️</a>
+                {% if CustomUser.avatar.url %}
+                    <a href="{% url 'apps.register:UpdateAvatar' %}">✏️</a>
+                {% else %}
+                    <a href="{% url 'apps.register:UpdateNewAvatar' %}">✏️</a>
+                {% endif %}
+
                 <h1 class="text-white fs-3 fw-bolder">Bienvenido, {{user.username}}</h1>
             </div>
         </header>
@@ -18,7 +23,8 @@
             <div class="container my-5">
                 <div class="row justify-content-center">
                     <div class="col-lg-6">
-                        <h2>Sobre mi</h2>
+                        <h2 class="text-start">Sobre mi</h2>
+                        <h4 class="text-end "><a href="{% url 'apps.register:UpdateUser' %}">✏️</a></h4>
                         <div class="container border border-primary border-2">
                             <div class="fs-5">
                                 <p class="mb-2">Nombre: {{user.first_name}}</p>

@@ -11,9 +11,9 @@ def VerProveedores(request):
     return render(request, "proveedores/ProveedoresShow.html", context)
 
 @login_required
-def DeleteProveedores(request, NameProveedor):
+def DeleteProveedores(request, IdProveedor):
     """ ests funcion elimina a el proveedor seleccionado en el HTML """
-    proveedor= models.Proveedores.objects.get(nombre= NameProveedor)
+    proveedor= models.Proveedores.objects.get(id= IdProveedor)
     proveedor.delete()
     
     Proveedores= models.Proveedores.objects.all()

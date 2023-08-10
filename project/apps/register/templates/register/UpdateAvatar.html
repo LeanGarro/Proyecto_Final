@@ -10,8 +10,12 @@
                 {% csrf_token %}
 
                     {{ form_avatar.as_p }}
-
-                <button type="submit" value="Actualizar" class="my-1 btn btn-primary">Cambiar Avatar</button>
+                    
+                {% if user.UserCustom.avatar.url %}
+                    <button type="submit" value="Actualizar" class="my-1 btn btn-primary">Cambiar Avatar</button>
+                {% else %}
+                    <button type="submit" value="Actualizar" class="my-1 btn btn-primary">Crear Avatar</button>
+                {% endif %}
             </form>
 
         </div>

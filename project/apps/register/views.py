@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import ReservaForms, UsuarioReserva, UserCustomForm, UserCustom
+from .forms import ReservaForms, UsuarioReserva, UserCustomForm, UserCustom, CustomUserRegisterForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from .forms import CustomUserRegisterForm, CustomAutentificationUser
@@ -69,56 +69,62 @@ def Login(request):
 
 @login_required
 def avatares(request):
-    try:
-        if UserCustom.DoesNotExist:
-            print("no !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-            if request.method == "POST":
-                    form= UserCustomForm(request.POST, request.FILES)
-                    if form.is_valid():
-                        user= User.objects.get(username= request.user)
-                        avatar= UserCustom(user=user, avatar=form.cleaned_data["avatar"])
-                        
-                        avatar.save()
-                        
-                        return render(request, "home/index.html")
-                    else:
-                        render(request, "register/reservar.html")
-            else:
-                form= UserCustomForm()
-
+    user= UserCustom.objects.get(user= request.user)
+    if request.method == "POST":
+        
+        form= UserCustomForm(request.POST, request.FILES)
+        
+        if form.is_valid():
+            info= form.cleaned_data
+            user.avatar= info['avatar']
+            
+            user.save()
+            
+            return render(request, "home/index.html")
         else:
-            if request.method == "POST":
-                    avatar= models.UserCustom.objects.get(user= request.user)
-                    form= UserCustomForm(request.POST, request.FILES)
-                    
-                    if form.is_valid():
-                        
-                        info= form.cleaned_data
-                        user= User.objects.get(username= request.user)
-                        avatar.avatar= info['avatar']
-                        avatar.save()
-                        
-                        CustomUser= UserCustom.objects.get(user=request.user)
-                        return render(request, "home/perfil.html", {"CustomUser":CustomUser})
-                    
-            else:
-                form= UserCustomForm()
-    except TypeError:
-        print("no !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-        if request.method == "POST":
-                form= UserCustomForm(request.POST, request.FILES)
-                if form.is_valid():
-                    user= User.objects.get(username= request.user)
-                    avatar= UserCustomForm(user=user, avatar=form.cleaned_data["avatar"])
-                    
-                    avatar.save()
-                    
-                    return render(request, "home/index.html")
-                else:
-                    render(request, "register/reservar.html")
-        else:
-            form= UserCustomForm()
-
+            render(request, "register/perfil.html", {"mensaje":"algo salio mal, intentalo de nuevo"})
+    else:
+        form= UserCustomForm()
+    
+    return render(request, "register/UpdateAvatar.html", {"form_avatar":form})
+  
+  
+def AvatarNew(request):
+    if request.method == "POST":
+        user= User.objects.get(username= request.user)
+        form= UserCustomForm(request.POST, request.FILES)
+        
+        if form.is_valid():
+            
+            info= form.cleaned_data
+            avatar= UserCustom(user=user, avatar=form.cleaned_data['avatar'])
+            avatar.save()
+            
+            return render(request, "home/index.html")
+    else:
+        form= UserCustomForm()
+    
     return render(request, "register/UpdateAvatar.html", {"form_avatar":form})
 
+def UserUpdate(request):
+    """ esta funcion actualiza a el user gracias a un formulario """
+    user= User.objects.get(username= request.user)
     
+    if request.method == "POST":
+        form= CustomUserRegisterForm(request.POST, request.FILES)
+        
+        if form.is_valid():
+            info= form.cleaned_data
+            
+            user.first_name= info['first_name']
+            user.last_name= info['last_name']
+            user.email= info['email']
+            user.username= info['username']
+
+            user.save()
+            return render(request, "home/index.html")
+    else:
+        form= CustomUserRegisterForm(initial={'first_name': user.first_name, 'last_name': user.last_name, 'email': user.email,
+        'username': user.username})
+    
+    return render(request, "register/UpdateUser.html", {"form_datos": form})

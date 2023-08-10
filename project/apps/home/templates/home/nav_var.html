@@ -30,8 +30,8 @@
                     <li class="nav-item"><a class="nav-link text-danger {% if  request.path == "/logout/"%}active{% endif %}" href="/logout/">Logout</a></li>    
                 {% else %}
                     <li class="nav-item"><a class="nav-link {% if  request.path == "/about/"%}active{% endif %}" href={% url 'home:about' %}>Nosotros</a></li>
-                    <li class="nav-item"><a class="nav-link {% if  request.path == "/register/"%}active{% endif %}" href={% url 'apps.register:Register' %} >Registrate</a></li>
-                    <li class="nav-item"><a class="nav-link {% if  request.path == "/login/"%}active{% endif %}" href={% url 'apps.register:Login' %} >Inicia sesion</a></li>
+                    <li class="nav-item"><a class="nav-link {% if  request.path == "/register/register/"%}active{% endif %}" href={% url 'apps.register:Register' %} >Registrate</a></li>
+                    <li class="nav-item"><a class="nav-link {% if  request.path == "/register/login/"%}active{% endif %}" href={% url 'apps.register:Login' %} >Inicia sesion</a></li>
                 {% endif %}
             </ul>
         </div>

@@ -26,7 +26,7 @@
             {% if proveedores_list %}
                 {% for obj in proveedores_list %}
                     {% if user.is_staff %}
-                        <a class="btn btn-danger" href="{% url 'apps.proveedores:DeleteProveedores' obj.nombre %}">Borrar</a> 
+                        <a class="btn btn-danger" href="{% url 'apps.proveedores:DeleteProveedores' obj.id %}">Borrar</a> 
                     {% endif %}
 
                     <img height="60px" width="60px" src="{{ obj.imagen.url }}" alt=" ">  {{obj}}
